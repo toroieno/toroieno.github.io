@@ -1,0 +1,303 @@
+/*
+Theme Name: Brian
+Theme URI: http://shtheme.com/demosd/brian
+Author: Shtheme
+Author URI: https://themeforest.net/user/shtheme
+Description: In 2022, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready
+Text Domain: brian
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* ========TABLE OF CONTENTS==========
+00. Body, links, hgroup, paragraphs, general styles
+01. Fixed header & Navigation
+02. Section Intro (Home)
+03. Section About
+04. Section Resume
+05. Section Portfolio
+06. Section Blog
+07. Section Contact
+08. Footer
+09. Loader
+10. Responsive design
+
+/*--------------------------------------------------
+    00. Body, links, hgroup, paragraphs, general styles
+---------------------------------------------------*/
+
+a {
+  color: #1b1b1b;
+}
+
+a:hover {
+  color: #FFB6C1
+}
+
+.gallery-menu a:not([href]):not([tabindex]):focus, .gallery-menu a:not([href]):not([tabindex]):hover {
+	color: #fff;
+}
+
+.comment-form-cookies-consent {
+  display: none;
+}
+
+.logged-in-as a {
+  color: #1b1b1b;
+}
+
+form div.col-md-12 {
+  padding: 0px;
+}
+
+.blog-post-comment-wrap .blog-user-content h3 a {
+  text-transform: capitalize;
+}
+
+.blog-post-comment-wrap .blog-user-content h3 a:hover {
+  color: #1b1b1b;
+}
+
+a.comment-reply-link:hover {
+  color: #FFB6C1;
+}
+
+.btn.focus, .btn:focus {
+  box-shadow: none;
+}
+
+.blog-comment-section h3.comments-title,
+.comment-respond h3.comment-reply-title {
+  font-size: 36px;
+  text-transform: capitalize;
+}
+
+.blog-sidebar div.widget_search {
+  width: 100%;
+}
+
+.blog-sidebar h3.widget-title {
+  padding-bottom: 0;
+  border-bottom: 1px solid #f1eaea;
+  line-height: 1.75em;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.widget_categories, .widget_tag_cloud {
+    background: #faf8f7;
+    padding: 30px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 100%;
+}
+
+.widget_categories ul li {
+    font-size: 15px;
+    line-height: 1.5em;
+    margin-bottom: 10px;
+}
+
+.widget_categories ul li a:before {
+    content: "\e649";
+    font-family: 'themify';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-size: 9px;
+    margin-right: 10px;
+}
+
+.widget_categories ul, .widget_tag_cloud ul {
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+
+.widget_tag_cloud ul li {
+    margin: 3px !important;
+    padding: 6px 16px;
+    border: 1px solid #f1eaea;
+    color: #666 !important;
+    float: left;
+    background-color: #fff;
+}
+
+.widget_tag_cloud ul li:hover {
+    color: #fff;
+    background-color: #FFB6C1;
+}
+
+.widget_tag_cloud ul li a {
+    font-size: 14px!important;
+    color: #666;
+}
+
+.widget_tag_cloud ul li:hover a {
+    color: #fff;
+}
+
+.post-content .content, .post-content .content .cont {
+  padding-left: 0px;
+}
+
+.marybrian-blog .post-content {
+  margin-bottom: 60px;
+}
+
+.post-content .info h6 a {
+  color: #FFB6C1;
+}
+
+.blog-pagination-wrap li span {
+  background: #fff;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #666;
+  font-weight: 300;
+  border-radius: 100%;
+  background-color: #FFB6C1;
+  border: 1px solid #FFB6C1;
+  color: #fff;
+}
+
+.search-custom h4 {
+  line-height: 32px;
+  font-size: 32px;
+}
+
+.search-custom {
+    margin-bottom: 60px;
+}
+
+.search-custom h4 {
+    padding-left: 15px;
+}
+
+.search-custom form {
+    width: 70%;
+}
+
+.search-custom form button[type="submit"] {
+    position: absolute;
+    right: 31%;
+    top: 0;
+    background-color: transparent;
+    color: #000;
+    border: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.logged-in .navbar.navbar-expand-lg {
+  top: 32px;
+}
+
+@media (max-width: 600px) {
+  .logged-in .navbar.navbar-expand-lg.nav-scroll {
+    top: -100px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 767px) {
+  .logged-in .navbar.navbar-expand-lg.nav-scroll {
+    top: -54px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logged-in .navbar.navbar-expand-lg.nav-scroll {
+    top: -68px;
+  }
+}
+
+.error-section h1 {
+  font-size: 120px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 40px;
+}
+
+.error-section h2 {
+  letter-spacing: 2px;
+  font-size: 50px;
+}
+
+.error-section div.text {
+  font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.error-section div.btn a {
+      display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      font-family: 'Didact Gothic', sans-serif;
+    background: #FFB6C1;
+    border: 1px solid #FFB6C1;
+    color: #fff;
+    padding: 12px 30px;
+    margin: 0;
+    font-weight: 400;
+    position: relative;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 0px;
+}
+
+.error-section div.btn a:hover {
+    background-color: transparent;
+    color: #1b1b1b;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+	color: #fff;
+}
+
+.nav-scroll .navbar-nav .nav-link:hover {
+    color: #FFB6C1;
+}
+
+.elementor .elementor-widget:not(.elementor-widget-text-editor):not(.elementor-widget-theme-post-content) .events figure {
+    margin-left: auto;
+}
+
+@media (max-width: 991px) {
+	.navbar .navbar-nav .nav-link:hover {
+		color: #666;
+	}
+}
+
+.flexslider .slides > li {
+	-webkit-backface-visibility: inherit;
+}
+
+
+.js.elementor-html .mary-hero .flexslider .slider-text {
+    opacity: 1;
+}
+.js.elementor-html .animate-box {
+    opacity: 1!important;
+}
