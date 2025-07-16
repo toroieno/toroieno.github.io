@@ -261,26 +261,26 @@
   });
 
   // Gift Registry owlCarousel
-  jQuery(".gift-registry .owl-carousel").owlCarousel({
-    loop: true,
-    margin: 10,
-    mouseDrag: true,
-    autoplay: true,
-    dots: false,
-    responsiveClass: true,
-    responsive: {
-      0: {
-        margin: 10,
-        items: 2,
-      },
-      600: {
-        items: 4,
-      },
-      1000: {
-        items: 5,
-      },
-    },
-  });
+  // jQuery(".gift-registry .owl-carousel").owlCarousel({
+  //   loop: true,
+  //   margin: 10,
+  //   mouseDrag: true,
+  //   autoplay: true,
+  //   dots: false,
+  //   responsiveClass: true,
+  //   responsive: {
+  //     0: {
+  //       margin: 10,
+  //       items: 2,
+  //     },
+  //     600: {
+  //       items: 4,
+  //     },
+  //     1000: {
+  //       items: 5,
+  //     },
+  //   },
+  // });
 
   // Slider
   var sliderMain = function () {
@@ -308,46 +308,46 @@
     });
   };
 
-//   // Gallery
-//   jQuery(window).on("load", function () {
-//     var e = jQuery(".gallery-filter"),
-//       a = jQuery("#gallery-filter");
-//     e.isotope({
-//       filter: "*",
-//       layoutMode: "masonry",
-//       animationOptions: {
-//         duration: 750,
-//         easing: "linear",
-//       },
-//     }),
-//       a.find("a").on("click", function () {
-//         var o = jQuery(this).attr("data-filter");
-//         return (
-//           a.find("a").removeClass("active"),
-//           jQuery(this).addClass("active"),
-//           e.isotope({
-//             filter: o,
-//             animationOptions: {
-//               animationDuration: 750,
-//               easing: "linear",
-//               queue: !1,
-//             },
-//           }),
-//           !1
-//         );
-//       });
-//   });
+  //   // Gallery
+  //   jQuery(window).on("load", function () {
+  //     var e = jQuery(".gallery-filter"),
+  //       a = jQuery("#gallery-filter");
+  //     e.isotope({
+  //       filter: "*",
+  //       layoutMode: "masonry",
+  //       animationOptions: {
+  //         duration: 750,
+  //         easing: "linear",
+  //       },
+  //     }),
+  //       a.find("a").on("click", function () {
+  //         var o = jQuery(this).attr("data-filter");
+  //         return (
+  //           a.find("a").removeClass("active"),
+  //           jQuery(this).addClass("active"),
+  //           e.isotope({
+  //             filter: o,
+  //             animationOptions: {
+  //               animationDuration: 750,
+  //               easing: "linear",
+  //               queue: !1,
+  //             },
+  //           }),
+  //           !1
+  //         );
+  //       });
+  //   });
 
-//   Magnific Popup
-      jQuery(".img-zoom").magnificPopup({
-      type: "image"
-      , closeOnContentClick: !0
-      , mainClass: "mfp-fade"
-      , gallery: {
-          enabled: !0
-          , navigateByImgClick: !0
-          , preload: [0, 1]
-      }
+  //   Magnific Popup
+  jQuery(".img-zoom").magnificPopup({
+    type: "image",
+    closeOnContentClick: !0,
+    mainClass: "mfp-fade",
+    gallery: {
+      enabled: !0,
+      navigateByImgClick: !0,
+      preload: [0, 1],
+    },
   });
 
   // Document on load.
@@ -434,3 +434,37 @@
       //seconds
     }, 0);
 })();
+
+// Initialize EmailJS
+emailjs.init("abybPP4vCrr_osE5K");
+
+document
+  .getElementById("contact-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const form = this;
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      message: formData.get("message"),
+    };
+    
+    emailjs.sendForm("service_l42i14e", "template_n3v11op", form).then(() => {
+      // Send to Google Sheets webhook
+      fetch("https://script.google.com/macros/s/AKfycbytnBxqIcFayPVeVDwrMMn6Hgw2-h7OvRL2LmD29HtVZBkAKq6UCM3Zq-1I97BhAYR5/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res?.json() ?? ({}))
+        .then(() => alert("Sent & saved to sheet!"))
+        .catch((err) => console.error("Sheet error:", err));
+        
+      form.reset();
+    });
+    
+  });

@@ -460,6 +460,10 @@
       opacity: 1 !important;
     }
   </style>
+  <!-- Include EmailJS SDK -->
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
 </head>
 
 <body
@@ -1185,21 +1189,13 @@
                           <h6 class="text-center">Mỗi lời chúc của bạn là một “vitamin hạnh phúc”, khiến tụi mình cười cả ngày, cảm động cả đêm và nhớ mãi không quên!</h6>
                           <div role="form" class="wpcf7" id="wpcf7-f5-p35-o1" lang="en-US" dir="ltr">
                             <div class="screen-reader-response"></div>
-                            <form action="/demosd/brian/#wpcf7-f5-p35-o1" method="post" class="wpcf7-form"
-                              novalidate="novalidate">
-                              <div style="display: none;">
-                                <input type="hidden" name="_wpcf7" value="5" />
-                                <input type="hidden" name="_wpcf7_version" value="5.0.2" />
-                                <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                                <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f5-p35-o1" />
-                                <input type="hidden" name="_wpcf7_container_post" value="35" />
-                              </div>
+                            <form id="contact-form" class="wpcf7-form">
                               <div class="contact__form">
                                 <div class="row">
                                   <div class="col-md-12">
                                     <div class="form-group">
                                       <span class="wpcf7-form-control-wrap your-name"><input type="text"
-                                          name="your-name" value="" size="40"
+                                          name="name" value="" size="40"
                                           class="wpcf7-form-control wpcf7-text form-control" aria-invalid="false"
                                           placeholder="Bạn để lại tên nhé" /></span>
                                     </div>
@@ -1207,7 +1203,7 @@
 
                                   <div class="col-md-12">
                                     <div class="form-group">
-                                      <span class="wpcf7-form-control-wrap your-message"><textarea name="your-message"
+                                      <span class="wpcf7-form-control-wrap your-message"><textarea name="message"
                                           cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea form-control"
                                           id="message" aria-invalid="false" placeholder="Lời chúc"></textarea></span>
                                     </div>
