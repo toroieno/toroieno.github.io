@@ -450,21 +450,34 @@ document
       name: formData.get("name"),
       message: formData.get("message"),
     };
+
+    if (!data.name || !data.message) return
+    
+    const btnSubmit = document.querySelector("button#btn-submit");
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = "Đang gửi chờ xíu nhé ...";
+    const textThanks = document.querySelector("h6#text-thanks")
+
+    async function saveToSheet() {
+      try {
+        // Send to Google Sheets webhook
+        await fetch(`https://script.google.com/macros/s/AKfycbytnBxqIcFayPVeVDwrMMn6Hgw2-h7OvRL2LmD29HtVZBkAKq6UCM3Zq-1I97BhAYR5/exec?name=${data.name}&message=${data.message}`, {
+          redirect: "follow",
+          method: "GET",
+        })
+        // alert("Cảm ơn bạn đã gửi lời chúc!")
+        textThanks.classList.remove("d-none")
+      } catch(e) {
+        console.error("Sheet error:", err)
+      } finally {
+        form.reset();
+        btnSubmit.textContent = "Gửi tới cặp đôi"
+      }
+    }
     
     emailjs.sendForm("service_l42i14e", "template_n3v11op", form).then(() => {
-      // Send to Google Sheets webhook
-      fetch("https://script.google.com/macros/s/AKfycbytnBxqIcFayPVeVDwrMMn6Hgw2-h7OvRL2LmD29HtVZBkAKq6UCM3Zq-1I97BhAYR5/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res?.json() ?? ({}))
-        .then(() => alert("Sent & saved to sheet!"))
-        .catch((err) => console.error("Sheet error:", err));
-        
-      form.reset();
-    });
-    
+      saveToSheet()
+    }).catch(() => {
+      saveToSheet()
+    })
   });
